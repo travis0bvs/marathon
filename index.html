@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travis runs New York</title>
+<meta name="description" content="Track Travis (bib 52271) at the 2026 TCS New York City Marathon, see where to cheer, and join the after-party at Fraunces Tavern.">
+<meta property="og:title" content="Travis runs New York — bib 52271">
+<meta property="og:description" content="Track me, find me on the course, and meet at Fraunces Tavern at 5 PM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F5F8;
+    --ink: #1C2433;
+    --muted: #5E6A7D;
+    --pink: #E8318A;
+    --pink-soft: #FCE3EF;
+    --route: #2F5DA8;
+    --line: #D5DBE4;
+    --card: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141A24; --ink: #EEF1F6; --muted: #9AA5B7; --pink: #FF5BA8;
+      --pink-soft: #3A1A2B; --route: #7EA4E6; --line: #2C3546; --card: #1D2533;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 17px/1.55 "Barlow", system-ui, sans-serif;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1, h2, .num { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-weight: 800; line-height: 1.05; }
+  h1 { font-size: clamp(40px, 11vw, 64px); margin: 0 0 8px; }
+  h2 { font-size: 30px; margin: 56px 0 12px; }
+  p { margin: 0 0 12px; max-width: 62ch; }
+  a { color: var(--route); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
+  .lede { color: var(--muted); font-size: 19px; }
+
+  /* The bib */
+  .bib {
+    position: relative; margin: 28px 0 16px; padding: 30px 24px 22px;
+    background: #fff; color: #1C2433; border-radius: 6px;
+    border-top: 14px solid var(--pink);
+    box-shadow: 0 1px 0 #cfd6e0, 0 12px 30px -18px rgba(28,36,51,.45);
+    transform: rotate(-1.2deg);
+  }
+  .bib::before, .bib::after, .bib .pins::before, .bib .pins::after {
+    content: ""; position: absolute; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg); box-shadow: inset 0 1px 2px rgba(0,0,0,.25);
+  }
+  .bib::before { top: 10px; left: 12px; } .bib::after { top: 10px; right: 12px; }
+  .bib .pins::before { bottom: 10px; left: 12px; } .bib .pins::after { bottom: 10px; right: 12px; }
+  .bib-race { font-weight: 600; font-size: 14px; color: #5E6A7D; margin: 0; }
+  .bib-number { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: clamp(88px, 28vw, 150px); line-height: .9; letter-spacing: -1px; margin: 6px 0 14px; }
+  .bib-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 2px solid #1C2433; padding-top: 10px; }
+  .bib-fields div { font-size: 13px; color: #5E6A7D; }
+  .bib-fields strong { display: block; font-family: "Barlow Condensed", sans-serif; font-size: 26px; color: #1C2433; }
+  .bib-fields .pink strong { color: #E8318A; }
+
+  .status { font-weight: 600; font-size: 18px; margin: 20px 0 0; min-height: 1.5em; }
+  .status .num { font-size: 22px; color: var(--pink); }
+
+  button.copy {
+    font: 600 16px "Barlow", sans-serif; cursor: pointer;
+    background: var(--pink); color: #fff; border: 0; border-radius: 999px; padding: 10px 18px;
+  }
+  .steps { padding-left: 1.3em; margin: 0 0 12px; }
+  .steps li { margin-bottom: 8px; }
+  .note { font-size: 15px; color: var(--muted); }
+
+  /* The course */
+  .course { list-style: none; margin: 20px 0 8px; padding: 0; position: relative; }
+  .course::before { content: ""; position: absolute; left: 51px; top: 8px; bottom: 8px; width: 4px; background: var(--route); border-radius: 2px; opacity: .35; }
+  .course li { display: grid; grid-template-columns: 44px 24px 1fr; column-gap: 10px; align-items: start; padding: 8px 0; position: relative; }
+  .course .mile { font-family: "Barlow Condensed", sans-serif; font-weight: 600; font-size: 18px; text-align: right; color: var(--muted); padding-top: 1px; }
+  .course .dot { width: 14px; height: 14px; margin: 5px 0 0 1px; border-radius: 50%; background: var(--card); border: 3px solid var(--route); position: relative; z-index: 1; }
+  .course .place { font-weight: 600; }
+  .course .time { display: block; font-family: "Barlow Condensed", sans-serif; font-weight: 600; font-size: 20px; line-height: 1.2; color: var(--route); }
+  .course .why { display: block; font-size: 15px; color: var(--muted); }
+  .course li.cheer .dot { background: var(--pink); border-color: var(--pink); }
+  .course li.passed { opacity: .45; }
+  .course li.next .place::after { content: "Travis is heading here"; display: inline-block; margin-left: 8px; font-size: 13px; font-weight: 600; color: #fff; background: var(--pink); border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+  .legend { font-size: 15px; color: var(--muted); }
+  .legend span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--pink); margin-right: 6px; }
+
+  .quote { margin: 0 0 16px; padding: 4px 0 4px 18px; border-left: 4px solid var(--pink); font-size: 19px; }
+  .quote p { margin-bottom: 8px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  .party { border-left: 8px solid var(--pink); }
+  .party .when { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 44px; line-height: 1; margin: 0 0 6px; }
+  .btn { display: inline-block; font-weight: 600; text-decoration: none; border: 2px solid var(--route); color: var(--route); border-radius: 999px; padding: 8px 16px; margin: 4px 8px 4px 0; }
+  .btn.solid { background: var(--pink); border-color: var(--pink); color: #fff; }
+  footer { margin-top: 56px; font-size: 14px; color: var(--muted); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bib { animation: pin .6s cubic-bezier(.2,.9,.3,1.3) both; }
+    @keyframes pin { from { transform: rotate(-6deg) translateY(-14px); opacity: 0; } to { transform: rotate(-1.2deg); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Travis runs New York</h1>
+  <p class="lede">My first marathon. Sunday, November 1, 2026. Five boroughs, 26.2 miles, and hopefully you somewhere along the way.</p>
+
+  <div class="bib" aria-label="Race bib 52271, pink start, wave 4, corral E">
+    <span class="pins" aria-hidden="true"></span>
+    <p class="bib-race">2026 TCS New York City Marathon</p>
+    <div class="bib-number">52271</div>
+    <div class="bib-fields">
+      <div class="pink">Start <strong>Pink</strong></div>
+      <div>Wave <strong>4</strong></div>
+      <div>Corral <strong>E</strong></div>
+    </div>
+  </div>
+
+  <p class="status" id="status" aria-live="polite"></p>
+
+  <h2>Track me live</h2>
+  <ol class="steps">
+    <li>Download the official <a href="https://apps.apple.com/app/id6742177802">New York Road Runners app</a> (iPhone), or search “New York Road Runners” in Google Play.</li>
+    <li>Find the runner tracking section and search for bib <strong>52271</strong> or “Travis Bradley”.</li>
+    <li>Follow me. You’ll see my splits every 5K and a dot on the course map.</li>
+  </ol>
+  <button class="copy" id="copyBib" type="button">Copy bib number</button>
+  <p class="note" style="margin-top:10px">Tip: follow me before race morning. The app gets slow once a million people open it at the same time.</p>
+
+  <h2>Where I’ll be, and when</h2>
+  <p>Estimated times for a 4:30 finish, starting with Wave 4 at 10:55 AM. Corral E usually crosses the start a few minutes after the gun, so treat these as roughly right and check the app for my real position.</p>
+  <ol class="course" id="course"></ol>
+  <p class="legend"><span></span>Good cheering spots</p>
+  <p>Planning a few stops? This <a href="https://www.nycmarathonguide.com/spectators?goal=16200&model=course&wave=4&start=pink">spectator planner</a> is already set to my wave and pace. The same site has a <a href="https://www.nycmarathonguide.com/">full guide to the course</a>.</p>
+
+  <h2>I’m running for CaringKind</h2>
+  <blockquote class="quote">
+    <p>If you know me well enough, you know that my family was and is affected by Dementia, and I learned first hand how hard this is on everyone around.</p>
+    <p>Caregiving is often overlooked until it’s in your life. I watched my close family go through this and LOVE that I have a chance to help others with awareness and support.</p>
+  </blockquote>
+  <p>CaringKind supports New Yorkers living with Alzheimer’s and dementia, and the families and friends who care for them. If you want to cheer from your couch, a donation is the best way to do it. I promise to repay you in bad jokes, love and hugs.</p>
+  <a class="btn solid" href="https://give.caringkindnyc.org/fundraiser/7048943">Donate to my fundraiser</a>
+
+  <h2>After-party</h2>
+  <div class="panel party">
+    <p class="when">5:00 PM</p>
+    <p><strong>Fraunces Tavern</strong><br>54 Pearl St (at Broad St), Financial District</p>
+    <p class="note">I’ve booked a room from 5. Drinks on a historic block downtown. I’ll be the one walking down the stairs sideways. Closest subway: Whitehall St (R, W) or Bowling Green (4, 5).</p>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Fraunces+Tavern+54+Pearl+St+New+York">Open in Maps</a>
+  </div>
+
+  <footer>Made by Travis at obvs.ca. Times are estimates, not promises.</footer>
+</main>
+
+<script>
+  // ---- Race settings: change these and the whole page updates ----
+  const RACE = {
+    start: new Date("2026-11-01T10:55:00-05:00"), // Wave 4 gun time (EST; clocks fall back that morning)
+    goalMinutes: 270,                             // 4:30 finish
+    distance: 26.2
+  };
+  const STOPS = [
+    { mile: 0,    place: "Verrazzano Bridge start", why: "Staten Island. No spectators allowed up here." },
+    { mile: 3,    place: "Fourth Ave, Bay Ridge", why: "Brooklyn’s first big crowds." },
+    { mile: 8.5,  place: "Lafayette Ave, Fort Greene", why: "The loudest crowd on the course.", cheer: true },
+    { mile: 11,   place: "Bedford Ave, Williamsburg", why: "Easy from the L train." },
+    { mile: 13.1, place: "Pulaski Bridge", why: "Halfway, into Queens." },
+    { mile: 15,   place: "Queensboro Bridge", why: "Quiet climb into Manhattan. No spectators." },
+    { mile: 16.5, place: "First Ave at 59th St", why: "The wall of sound coming off the bridge.", cheer: true },
+    { mile: 17.5, place: "First Ave, 70s–80s", why: "Easy subway access on the Q.", cheer: true },
+    { mile: 20,   place: "Willis Ave Bridge, the Bronx", why: "Mile 20. This is where it gets hard." },
+    { mile: 23.5, place: "Fifth Ave, 90th–100th St", why: "The toughest stretch. A familiar face helps most here.", cheer: true },
+    { mile: 24,   place: "Engineers’ Gate, Central Park", why: "Into the park." },
+    { mile: 25.8, place: "Central Park South", why: "Last push along the bottom of the park.", cheer: true },
+    { mile: 26.2, place: "Finish, Tavern on the Green", why: "Done. Then I find a poncho and head downtown." }
+  ];
+
+  const pace = RACE.goalMinutes / RACE.distance; // minutes per mile
+  const fmt = d => d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" });
+  const at = mile => new Date(RACE.start.getTime() + mile * pace * 60000);
+  const finish = at(RACE.distance);
+
+  const list = document.getElementById("course");
+  STOPS.forEach(s => {
+    const li = document.createElement("li");
+    if (s.cheer) li.classList.add("cheer");
+    li.innerHTML = `<span class="mile">${s.mile === 0 ? "Start" : s.mile}</span><span class="dot"></span>
+      <span><span class="place">${s.place}</span><span class="time">${fmt(at(s.mile))}</span><span class="why">${s.why}</span></span>`;
+    list.appendChild(li);
+  });
+
+  function update() {
+    const now = new Date();
+    const el = document.getElementById("status");
+    const items = list.children;
+    if (now < RACE.start) {
+      const ms = RACE.start - now, d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4);
+      el.innerHTML = d > 0 ? `Starting line in <span class="num">${d} days, ${h} hours</span>`
+                           : `Starting line in <span class="num">${h}h ${m}m</span>`;
+    } else if (now < finish) {
+      const mile = (now - RACE.start) / 6e4 / pace;
+      el.innerHTML = `Right now I’m probably around <span class="num">mile ${mile.toFixed(1)}</span>. Check the app for the real thing.`;
+      let marked = false;
+      STOPS.forEach((s, i) => {
+        items[i].classList.toggle("passed", s.mile < mile);
+        const isNext = !marked && s.mile >= mile;
+        items[i].classList.toggle("next", isNext);
+        if (isNext) marked = true;
+      });
+    } else {
+      el.innerHTML = `Estimated finish was <span class="num">${fmt(finish)}</span>. See you at Fraunces Tavern at 5.`;
+      [...items].forEach(li => { li.classList.remove("next"); li.classList.add("passed"); });
+    }
+  }
+  update(); setInterval(update, 30000);
+
+  document.getElementById("copyBib").addEventListener("click", async e => {
+    try { await navigator.clipboard.writeText("52271"); e.target.textContent = "Copied 52271"; }
+    catch { e.target.textContent = "Bib: 52271"; }
+  });
+</script>
+</body>
+</html>
